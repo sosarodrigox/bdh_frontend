@@ -35,7 +35,7 @@ export default function PersonaAsignacionUP() {
 
     const getPersona = async (id) => {
         try {
-            let resultado = await axios.get(`http://localhost:8000/personas/${id}`);
+            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/personas/${id}`);
             setPersona(resultado.data);
         } catch (error) {
             console.log(error);
@@ -60,17 +60,17 @@ export default function PersonaAsignacionUP() {
 
             try {
                 if (tipoUnidadProductiva === "EMPRENDIMIENTO INDIVIDUAL") {
-                    await axios.post("http://localhost:8000/emprendedores", {
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/emprendedores`, {
                         persona_id: persona.id,
                     });
 
                     unidadProductiva.denominacion_up = `UP_${persona.apellido}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'emprendedor';
-                    await axios.post("http://localhost:8000/up", unidadProductiva);
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "emprendedor"
-                    let resultado = await axios.put(`http://localhost:8000/personas/${persona.id}`, persona);
+                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`, persona);
                     console.log(resultado);
                 }
                 // else {
@@ -79,7 +79,7 @@ export default function PersonaAsignacionUP() {
                 // }
 
                 if (tipoUnidadProductiva === "GRUPO ASOCIATIVO") {
-                    await axios.post("http://localhost:8000/grupos", {
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/grupos`, {
                         representante_grupo_id: persona.id,
                         nombre_grupo: nombreGrupo,
                     });
@@ -87,16 +87,16 @@ export default function PersonaAsignacionUP() {
                     unidadProductiva.denominacion_up = `UP_${nombreGrupo}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'grupo';
-                    await axios.post("http://localhost:8000/up", unidadProductiva);
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "representante"
-                    let resultado = await axios.put(`http://localhost:8000/personas/${persona.id}`,
+                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`,
                         persona);
                     console.log(resultado);
                 }
 
                 if (tipoUnidadProductiva === "COOPERATIVA") {
-                    await axios.post("http://localhost:8000/cooperativas", {
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cooperativas`, {
                         presidente_id: persona.id,
                         nombre_cooperativa: nombreCooperativa,
                     });
@@ -104,10 +104,10 @@ export default function PersonaAsignacionUP() {
                     unidadProductiva.denominacion_up = `UP_${nombreCooperativa}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'cooperativa';
-                    await axios.post("http://localhost:8000/up", unidadProductiva);
+                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "presidente"
-                    let resultado = await axios.put(`http://localhost:8000/personas/${persona.id}`,
+                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`,
                         persona);
                     console.log(resultado);
                 }
@@ -140,18 +140,6 @@ export default function PersonaAsignacionUP() {
                     <option value="COOPERATIVA">COOPERATIVA</option>
                 </select>
             </div>
-
-            {/* {tipoUnidadProductiva === "EMPRENDIMIENTO INDIVIDUAL" && (
-                <EmprendimientoIndividual persona={persona} />
-            )}
-
-            {tipoUnidadProductiva &&
-                (tipoUnidadProductiva === "EMPRENDIMIENTO INDIVIDUAL") && (
-                    <Formulario_UP
-                        unidadProductiva={unidadProductiva}
-                        setUnidadProductiva={setUnidadProductiva} // Pasar setUnidadProductiva
-                    />
-                )} */}
 
             {tipoUnidadProductiva === "EMPRENDIMIENTO INDIVIDUAL" && (
                 <>

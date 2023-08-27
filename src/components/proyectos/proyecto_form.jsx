@@ -33,7 +33,7 @@ export default function ProyectoForm() {
 
     const getProyecto = async (id) => {
         try {
-            let resultado = await axios.get(`http://localhost:8000/proyectos/${id}`);
+            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/proyectos/${id}`);
             /* console.log(resultado); */
             setDatos(resultado.data);
         } catch (error) {
@@ -51,11 +51,11 @@ export default function ProyectoForm() {
             if (datos.id == -1) {
                 datos.cantidad_personas = 0;
                 datos.cantidad_up = 0;
-                let resultado = await axios.post(`http://localhost:8000/proyectos/`, datos);
+                let resultado = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/proyectos/`, datos);
                 console.log(resultado);
                 alert("Proyecto cargado con éxito");
             } else {
-                let resultado = await axios.put(`http://localhost:8000/proyectos/${datos.id}`, datos);
+                let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/proyectos/${datos.id}`, datos);
                 console.log(resultado);
                 alert("Proyecto modificado con éxito");
             }

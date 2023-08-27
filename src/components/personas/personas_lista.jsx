@@ -11,7 +11,7 @@ export default function PersonasLista() {
     }, [])
 
     const getPersonas = async () => {
-        let resultado = await axios.get('http://localhost:8000/personas')
+        let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/personas`)
         setPersonas(resultado.data)
     }
 
@@ -33,7 +33,7 @@ export default function PersonasLista() {
                 "¿Estás seguro de querer eliminar esta persona?"
             );
             if (confirmarEliminar) {
-                await axios.delete(`http://localhost:8000/personas/${id}`);
+                await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/personas/${id}`);
                 setPersonas(personas.filter((persona) => persona.id !== id));
             }
         } catch (error) {

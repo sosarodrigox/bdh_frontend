@@ -42,7 +42,7 @@ export default function GrupoAsociativo({
                     "id_grupo": grupoSeleccionado.id,
                     "id_nuevo_integrante": persona.id,
                 }
-                axios.post(`http://localhost:8000/grupos/nuevo`, nuevoIntegrante);
+                axios.post(`${process.env.REACT_APP_BACKEND_URL}/grupos/nuevo`, nuevoIntegrante);
 
                 alert(`Mensaje: ${persona.apellido}, ${persona.nombre} a sido asignado/a como integrante del grupo: ${grupoSeleccionado.nombre_grupo}`);
                 navegar(-1);
@@ -54,7 +54,7 @@ export default function GrupoAsociativo({
 
     const getGrupos = async () => {
         try {
-            let resultado = await axios.get(`http://localhost:8000/grupos/`);
+            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/grupos/`);
             setGrupos(resultado.data);
         } catch (error) {
             setGrupos([]);
