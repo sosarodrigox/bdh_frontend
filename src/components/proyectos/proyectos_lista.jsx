@@ -11,7 +11,7 @@ export default function ProyectosLista() {
     }, [])
 
     const getProyectos = async () => {
-        let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/proyectos`)
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/proyectos`)
         setProyectos(resultado.data)
     }
 
@@ -33,7 +33,7 @@ export default function ProyectosLista() {
                 "¿Estás seguro de querer eliminar esta proyecto?"
             );
             if (confirmarEliminar) {
-                await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/proyectos/${id}`);
+                await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/proyectos/${id}`);
                 setProyectos(proyectos.filter((proyecto) => proyecto.id !== id));
             }
         } catch (error) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 
 export default function PersonasLista() {
     const [personas, setPersonas] = useState([])
@@ -11,7 +11,7 @@ export default function PersonasLista() {
     }, [])
 
     const getPersonas = async () => {
-        let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/personas`)
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas`)
         setPersonas(resultado.data)
     }
 
@@ -33,7 +33,7 @@ export default function PersonasLista() {
                 "¿Estás seguro de querer eliminar esta persona?"
             );
             if (confirmarEliminar) {
-                await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/personas/${id}`);
+                await axios.delete(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${id}`);
                 setPersonas(personas.filter((persona) => persona.id !== id));
             }
         } catch (error) {

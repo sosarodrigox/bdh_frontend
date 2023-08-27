@@ -10,7 +10,7 @@ export default function CooperativasLista() {
     }, []);
 
     const getCooperativas = async () => {
-        let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/up/cooperativas`);
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/cooperativas`);
         setCooperativas(resultado.data);
     };
 

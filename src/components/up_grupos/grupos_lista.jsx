@@ -10,7 +10,7 @@ export default function GruposLista() {
     }, []);
 
     const getGrupos = async () => {
-        let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/up/grupos`);
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/grupos`);
         setGrupos(resultado.data);
     };
 

@@ -34,7 +34,7 @@ export default function PersonaForm() {
 
     const getPersona = async (id) => {
         try {
-            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/personas/${id}`);
+            let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${id}`);
             /* console.log(resultado); */
             setDatos(resultado.data);
         } catch (error) {
@@ -51,11 +51,11 @@ export default function PersonaForm() {
         try {
             if (datos.id == -1) {
                 datos.rol = "no asignado";
-                let resultado = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/personas/`, datos);
+                let resultado = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/`, datos);
                 console.log(resultado);
                 alert("Persona cargada con éxito");
             } else {
-                let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${datos.id}`, datos);
+                let resultado = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${datos.id}`, datos);
                 console.log(resultado);
                 alert("Persona modificada con éxito");
             }

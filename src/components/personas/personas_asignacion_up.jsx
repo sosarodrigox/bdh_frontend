@@ -35,7 +35,7 @@ export default function PersonaAsignacionUP() {
 
     const getPersona = async (id) => {
         try {
-            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/personas/${id}`);
+            let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${id}`);
             setPersona(resultado.data);
         } catch (error) {
             console.log(error);
@@ -60,17 +60,17 @@ export default function PersonaAsignacionUP() {
 
             try {
                 if (tipoUnidadProductiva === "EMPRENDIMIENTO INDIVIDUAL") {
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/emprendedores`, {
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/emprendedores`, {
                         persona_id: persona.id,
                     });
 
                     unidadProductiva.denominacion_up = `UP_${persona.apellido}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'emprendedor';
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "emprendedor"
-                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`, persona);
+                    let resultado = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${persona.id}`, persona);
                     console.log(resultado);
                 }
                 // else {
@@ -79,7 +79,7 @@ export default function PersonaAsignacionUP() {
                 // }
 
                 if (tipoUnidadProductiva === "GRUPO ASOCIATIVO") {
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/grupos`, {
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/grupos`, {
                         representante_grupo_id: persona.id,
                         nombre_grupo: nombreGrupo,
                     });
@@ -87,16 +87,16 @@ export default function PersonaAsignacionUP() {
                     unidadProductiva.denominacion_up = `UP_${nombreGrupo}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'grupo';
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "representante"
-                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`,
+                    let resultado = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${persona.id}`,
                         persona);
                     console.log(resultado);
                 }
 
                 if (tipoUnidadProductiva === "COOPERATIVA") {
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/cooperativas`, {
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/cooperativas`, {
                         presidente_id: persona.id,
                         nombre_cooperativa: nombreCooperativa,
                     });
@@ -104,10 +104,10 @@ export default function PersonaAsignacionUP() {
                     unidadProductiva.denominacion_up = `UP_${nombreCooperativa}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'cooperativa';
-                    await axios.post(`${process.env.REACT_APP_BACKEND_URL}/up`, unidadProductiva);
+                    await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`, unidadProductiva);
 
                     persona.rol = "presidente"
-                    let resultado = await axios.put(`${process.env.REACT_APP_BACKEND_URL}/personas/${persona.id}`,
+                    let resultado = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${persona.id}`,
                         persona);
                     console.log(resultado);
                 }

@@ -42,7 +42,7 @@ export default function Cooperativa({
                     "id_cooperativa": cooperativaSeleccionada.id,
                     "id_nuevo_asociado": persona.id,
                 }
-                axios.post(`${process.env.REACT_APP_BACKEND_URL}/cooperativas/nuevo`, nuevoAsociado);
+                axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/cooperativas/nuevo`, nuevoAsociado);
 
                 alert(`Mensaje: ${persona.apellido}, ${persona.nombre} a sido asignado/a como asociado de la cooperativa: ${cooperativaSeleccionada.nombre_cooperativa}`);
                 navegar(-1);
@@ -54,7 +54,7 @@ export default function Cooperativa({
 
     const getCooperativas = async () => {
         try {
-            let resultado = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/cooperativas`);
+            let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/cooperativas`);
             setCooperativas(resultado.data);
         } catch (error) {
             setCooperativas([]);
