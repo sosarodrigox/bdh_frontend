@@ -64,6 +64,9 @@ export default function EquipamientoLista() {
                                     </Link>
                                     </td>
                                     <td>
+                                        {equipamiento.tipo}
+                                    </td>
+                                    <td>
                                         {equipamiento.descripcion_principal}
                                     </td>
                                     <td>
