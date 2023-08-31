@@ -11,6 +11,9 @@ import GrupoAsociativoForm from './components/personas/grupo_asociativo_form'
 import Proyectos from './components/proyectos'
 import ProyectosLista from './components/proyectos/proyectos_lista'
 import ProyectoForm from './components/proyectos/proyecto_form'
+import Equipamiento from './components/equipamiento'
+import EquipamientoLista from './components/equipamiento/equipamiento_lista'
+import EquipamientoForm from './components/equipamiento/equipamiento_form'
 import EmprendedoresLista from './components/up_emprendedores/emprendedores_lista'
 import GruposLista from './components/up_grupos/grupos_lista'
 import CooperativasLista from './components/up_cooperativas/cooperativas_lista'
@@ -27,7 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="personas_lista/up/:id" element={<PersonaAsignacionUP />}></Route>
             <Route path="personas_lista/up/:id/:id_grupo" element={<GrupoAsociativoForm />}></Route>
           </Route>
-          <Route path="up" element={<UnidadesProductivas />}>
+          <Route path='up' element={<UnidadesProductivas />}>
             <Route path='emprendedores' element={<EmprendedoresLista />}></Route>
             <Route path='grupos' element={<GruposLista />}></Route>
             <Route path='cooperativas' element={<CooperativasLista />}></Route>
@@ -35,6 +38,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='proyectos' element={<Proyectos />}>
             <Route path='proyectos_lista' element={<ProyectosLista />}></Route>
             <Route path="proyectos_lista/:id" element={<ProyectoForm />}></Route>
+          </Route>
+          <Route path='equipamiento' element={<Equipamiento />}>
+            <Route path='equipamiento_lista' element={<EquipamientoLista />}></Route>
+            <Route path='equipamiento_lista/:id' element={<EquipamientoForm />}></Route>
           </Route>
         </Route>
       </Routes>

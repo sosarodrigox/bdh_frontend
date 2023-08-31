@@ -34,7 +34,6 @@ export default function ProyectoForm() {
     const getProyecto = async (id) => {
         try {
             let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/proyectos/${id}`);
-            /* console.log(resultado); */
             setDatos(resultado.data);
         } catch (error) {
             console.log(error);
