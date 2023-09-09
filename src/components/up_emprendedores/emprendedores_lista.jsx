@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function EmprendedoresLista() {
     const [emprendedores, setEmprendedores] = useState([]);
+    const navegar = useNavigate();
 
     useEffect(() => {
         getEmprendedores();
@@ -12,6 +13,14 @@ export default function EmprendedoresLista() {
     const getEmprendedores = async () => {
         let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/emprendedores`);
         setEmprendedores(resultado.data);
+    };
+
+    const asignarEquipamiento = (id) => {
+        navegar("equipamiento/" + id);
+    };
+
+    const asignarProyecto = (id) => {
+        navegar("up/" + id);
     };
 
     return (

@@ -122,7 +122,7 @@ export default function EquipamientoAsignacionUP() {
 
     return (
         <div className="text-start col-6 offset-3 border p-3">
-            <h1 className="mt-3 text-center">Asignar Unidad Productiva:</h1>
+            <h1 className="mt-3 text-center">Asignar Equipamiento:</h1>
             <h3 className="mt-3 text-center">
                 {persona.apellido}, {persona.nombre} - {persona.cuil}
             </h3>

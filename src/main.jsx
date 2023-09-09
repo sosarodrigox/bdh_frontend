@@ -14,6 +14,7 @@ import ProyectoForm from './components/proyectos/proyecto_form'
 import Equipamiento from './components/equipamiento'
 import EquipamientoLista from './components/equipamiento/equipamiento_lista'
 import EquipamientoForm from './components/equipamiento/equipamiento_form'
+import EquipamientoAsignacionUP from './components/equipamiento/equipamiento_asignacion_up'
 import EmprendedoresLista from './components/up_emprendedores/emprendedores_lista'
 import GruposLista from './components/up_grupos/grupos_lista'
 import CooperativasLista from './components/up_cooperativas/cooperativas_lista'
@@ -32,6 +33,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           </Route>
           <Route path='up' element={<UnidadesProductivas />}>
             <Route path='emprendedores' element={<EmprendedoresLista />}></Route>
+            <Route path='emprendedores/equipamiento/:id' element={<EquipamientoAsignacionUP />}></Route>
             <Route path='grupos' element={<GruposLista />}></Route>
             <Route path='cooperativas' element={<CooperativasLista />}></Route>
           </Route>
