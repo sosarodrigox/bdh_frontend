@@ -26,6 +26,8 @@ export default function EmprendedoresLista() {
                             <th>emprendimiento_formalizado</th>
                             <th>emprendimiento_activo</th>
                             <th>emprendedor_id</th>
+                            <th>Equipamiento</th>
+                            <th>Proyecto</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +40,22 @@ export default function EmprendedoresLista() {
                                 <td>{emprendedor.emprendimiento_formalizado ? "Sí" : "No"}</td>
                                 <td>{emprendedor.emprendimiento_activo ? "Sí" : "No"}</td>
                                 <td>{emprendedor.persona_id}</td>
+                                <td>
+                                    <button
+                                        className="btn btn-success"
+                                        onClick={() => asignarEquipamiento(emprendedor.persona_id)}
+                                    >
+                                        Equipar
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        className="btn btn-warning"
+                                        onClick={() => asignarProyecto(emprendedor.persona_id)}
+                                    >
+                                        Asignar
+                                    </button>
+                                </td>
                             </tr>
                         ))}
                     </tbody>
