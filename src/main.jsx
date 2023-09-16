@@ -37,7 +37,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path='emprendedores/equipamiento/:id' element={<EquipamientoAsignacionUP />}></Route>
             <Route path='emprendedores/proyecto/:id' element={<ProyectoAsignacionUP />}></Route>
             <Route path='grupos' element={<GruposLista />}></Route>
+            <Route path='grupos/equipamiento/:id' element={<EquipamientoAsignacionUP />}></Route>
+            <Route path='grupos/proyecto/:id' element={<ProyectoAsignacionUP />}></Route>
             <Route path='cooperativas' element={<CooperativasLista />}></Route>
+            <Route path='cooperativas/equipamiento/:id' element={<EquipamientoAsignacionUP />}></Route>
+            <Route path='cooperativas/proyecto/:id' element={<ProyectoAsignacionUP />}></Route>
           </Route>
           <Route path='proyectos' element={<Proyectos />}>
             <Route path='proyectos_lista' element={<ProyectosLista />}></Route>
