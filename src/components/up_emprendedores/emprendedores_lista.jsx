@@ -11,8 +11,9 @@ export default function EmprendedoresLista() {
     }, []);
 
     const getEmprendedores = async () => {
-        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/emprendedores`);
-        setEmprendedores(resultado.data);
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`);
+        const emprendedoresFiltrados = resultado.data.filter(emprendedor => emprendedor.tipo_up === "emprendedor");
+        setEmprendedores(emprendedoresFiltrados);
     };
 
     const asignarEquipamiento = (id) => {
@@ -52,7 +53,7 @@ export default function EmprendedoresLista() {
                                 <td>
                                     <button
                                         className="btn btn-success"
-                                        onClick={() => asignarEquipamiento(emprendedor.persona_id)}
+                                        onClick={() => asignarEquipamiento(emprendedor.id)}
                                     >
                                         Equipar
                                     </button>

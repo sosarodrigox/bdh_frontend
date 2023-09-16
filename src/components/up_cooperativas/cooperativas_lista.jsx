@@ -10,8 +10,9 @@ export default function CooperativasLista() {
     }, []);
 
     const getCooperativas = async () => {
-        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/cooperativas`);
-        setCooperativas(resultado.data);
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`);
+        const cooperativasFiltradas = resultado.data.filter(cooperativa => cooperativa.tipo_up === "cooperativa");
+        setCooperativas(cooperativasFiltradas);
     };
 
     return (

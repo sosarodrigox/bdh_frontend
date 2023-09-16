@@ -10,8 +10,9 @@ export default function GruposLista() {
     }, []);
 
     const getGrupos = async () => {
-        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up/grupos`);
-        setGrupos(resultado.data);
+        let resultado = await axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`);
+        const gruposFiltrados = resultado.data.filter(grupo => grupo.tipo_up === "grupo");
+        setGrupos(gruposFiltrados);
     };
 
     return (
