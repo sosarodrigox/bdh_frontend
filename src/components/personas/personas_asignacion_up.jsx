@@ -24,6 +24,7 @@ export default function PersonaAsignacionUP() {
         comercializacion_descripcion: "",
         servicios_productos: "",
         cantidad_integrantes: 0,
+        proyecto_id: null,
     });
 
     const params = useParams();
@@ -64,10 +65,16 @@ export default function PersonaAsignacionUP() {
                         persona_id: persona.id,
                     });
 
+                    console.log(persona)
+
                     unidadProductiva.denominacion_up = `UP_${persona.apellido}_${persona.cuil}`;
                     unidadProductiva.persona_id = persona.id;
                     unidadProductiva.tipo_up = 'emprendedor';
+                    unidadProductiva.cantidad_integrantes = 1;
+                    // unidadProductiva.proyecto_id = -1;
                     await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/up`, unidadProductiva);
+
+                    console.log(unidadProductiva)
 
                     persona.rol = "emprendedor"
                     let resultado = await axios.put(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/personas/${persona.id}`, persona);
