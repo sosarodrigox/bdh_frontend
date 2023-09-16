@@ -21,7 +21,7 @@ export default function EmprendedoresLista() {
     };
 
     const asignarProyecto = (id) => {
-        navegar("up/" + id);
+        navegar("proyecto/" + id);
     };
 
     return (
@@ -61,7 +61,7 @@ export default function EmprendedoresLista() {
                                 <td>
                                     <button
                                         className="btn btn-warning"
-                                        onClick={() => asignarProyecto(emprendedor.persona_id)}
+                                        onClick={() => asignarProyecto(emprendedor.id)}
                                     >
                                         Asignar
                                     </button>
