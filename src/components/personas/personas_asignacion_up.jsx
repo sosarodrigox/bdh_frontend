@@ -89,6 +89,7 @@ export default function PersonaAsignacionUP() {
                     await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/grupos`, {
                         representante_grupo_id: persona.id,
                         nombre_grupo: nombreGrupo,
+                        cantidad_integrantes: 0,
                     });
 
                     unidadProductiva.denominacion_up = `UP_${nombreGrupo}_${persona.cuil}`;
@@ -106,6 +107,7 @@ export default function PersonaAsignacionUP() {
                     await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_URL}/cooperativas`, {
                         presidente_id: persona.id,
                         nombre_cooperativa: nombreCooperativa,
+                        cantidad_integrantes: 0,
                     });
 
                     unidadProductiva.denominacion_up = `UP_${nombreCooperativa}_${persona.cuil}`;
